@@ -1,0 +1,141 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String           @id @default(cuid())
+  name           String
+  username       String?          @unique
+  email          String?          @unique
+  emailVerified  Boolean?         @default(false)
+  image          String?
+  followersCount Int?             @default(0)
+  blogs          Blog[]
+  comments       Comment[]
+  likes          Like[]
+  accounts       Account[]
+  sessions       Session[]
+  readHistory    ReadHistory[]
+  followers      Follows[]        @relation("UserFollowers")
+  following      Follows[]        @relation("UserFollowing")
+
+  @@index([username])
+  @@map("users")
+}
+
+model Blog {
+  id            String       @id @default(cuid())
+  title         String
+  body          String
+  likesCount    Int?         @default(0)
+  commentsCount Int?         @default(0)
+  readCount     Int?         @default(0)
+  published     Boolean?     @default(true)
+  updatedAt     DateTime?    @updatedAt
+  createdAt     DateTime?    @default(now())
+  authorId      String
+  author        User         @relation(fields: [authorId], references: [id])
+  comments      Comment[]
+  likes         Like[]
+  readHistory   ReadHistory[]
+  tags          BlogTag[]
+
+  @@map("blogs")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  body      String
+  blogId    String
+  authorId  String
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
+}
+
+model Like {
+  id     String  @id @default(cuid())
+  blogId String
+  userId String
+  blog   Blog @relation(fields: [blogId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
+
+  @@map("likes")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@map("sessions")
+}
+
+model Account {
+  id                String     @id @default(cuid())
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? 
+  access_token      String? 
+  expires_at        Int?    
+  token_type        String? 
+  scope             String?
+  id_token          String? 
+  sessionState      String?
+  userId            String
+  user              User       @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model ReadHistory {
+  id     String  @id @default(cuid())
+  blogId String
+  userId String
+  blog   Blog @relation(fields: [blogId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
+  @@map("read_history")
+}
+
+model Follows {
+  id          String  @id @default(cuid())
+  followerId  String
+  followingId String
+  follower    User @relation("UserFollowers", fields: [followerId], references: [id])
+  following   User @relation("UserFollowing", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
+
+  @@map("follows")
+}
+
+model Tag {
+  id    String   @id @default(cuid())
+  name  String   @unique
+  blogs BlogTag[]
+
+  @@map("tags")
+}
+
+model BlogTag {
+  id     String  @id @default(cuid())
+  blogId String
+  tagId  String
+  blog   Blog    @relation(fields: [blogId], references: [id])
+  tag    Tag     @relation(fields: [tagId], references: [id])
+
+  @@unique([blogId, tagId])
+  @@map("blog_tags")
+}
