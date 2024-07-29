@@ -1,5 +1,6 @@
 import LogoBanner from './LogoBanner';
 import NavBarMenuItems from './NavBarMenuItems';
+import NavBarSessionButtons from './NavbarSessionButtons';
 
 export default function Navbar() {
   return (
@@ -7,6 +8,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         <LogoBanner />
         <NavBarMenuItems />
+        <NavBarSessionButtons />
       </div>
     </nav>
   );

@@ -12,12 +12,20 @@ const config: Config = {
         sans: ['Open Sans', 'sans-serif'],
         logo: ['Edu AU VIC WA NT Hand', 'cursive'],
       },
+      fontSize: {
+        h1: ['2.25rem', { lineHeight: '3.25rem' }], // Example size, equivalent to 36px
+        h2: ['1.875rem', { lineHeight: '2.75rem' }], // Example size, equivalent to 30px
+        p: ['1rem', { lineHeight: '1.75rem' }], // Example size, equivalent to 16px
+      },
       colors: {
+        heading1: '#1a202c',
+        heading2: '#2d3748',
+        para: '#4a5568',
         light: {
           background: '#FDFEFE',
           text: '#212F3C',
           button: {
-            background: '#f0f0f0',
+            background: '#F1F1F1',
             text: '#000000',
           },
           input: {

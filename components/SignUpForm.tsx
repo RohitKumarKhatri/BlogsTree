@@ -7,14 +7,14 @@ import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 export default function SignUpForm() {
   return (
-    <div className="mx-auto bg-white dark:bg-gray-800 px-8 pb-8 pt-2 rounded-lg w-full md:w-[500px] min-w-sm">
+    <div className="mx-auto text-slate-900 dark:text-white bg-white dark:bg-gray-800 px-8 pb-8 pt-2 rounded-lg w-full md:w-[500px] min-w-sm">
       <div className="w-full">
-        <h1 className="mx-auto text-2xl font-bold text-center p-8">
+        <p className="mx-auto text-2xl font-bold text-center p-8">
           Join BlogsTree.
         </h1>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 ">
         <button
           type="submit"
           className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 mb-4">

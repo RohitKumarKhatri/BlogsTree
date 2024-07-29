@@ -7,22 +7,7 @@ import { FaCheck } from 'react-icons/fa';
 const MembershipPage: React.FC = () => {
   return (
     <div className="min-h-screen p-6 ">
-      <h1 className="text-5xl font-bold mb-12 text-center">
-        Join BlogsTree Membership
-      </h1>
-
-      <section className="mb-16 text-center">
-        <p className="text-2xl font-semibold mb-4">
-          Support Meaningful Stories
-        </p>
-
-        <p className="text-lg mb-8">
-          Become a member to read without limits or ads, support talented
-          writers, and join a vibrant community that values quality
-          storytelling.
-        </p>
-        <ImageCarousel />
-      </section>
+      <p className="text-5xl mb-12 text-center">Join BlogsTree Membership</p>
 
       <section className="mb-16">
         <div className="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-8">
@@ -55,7 +40,7 @@ const MembershipPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6 shadow-lg flex-1 flex flex-col justify-between bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+          <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6 shadow-lg flex-1 flex flex-col justify-between from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
             <div>
               <h2 className="text-3xl font-semibold mb-4">
                 Premium Member of BlogsTree
@@ -82,10 +67,23 @@ const MembershipPage: React.FC = () => {
         </div>
       </section>
 
+      <section className="mb-16 text-center">
+        <p className="text-2xl font-semibold mb-4">
+          Support Meaningful Stories
+        </p>
+
+        <p className="text-lg mb-8">
+          Become a member to read without limits or ads, support talented
+          writers, and join a vibrant community that values quality
+          storytelling.
+        </p>
+        <ImageCarousel />
+      </section>
+
       <section className="mb-16">
         <div className="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-8">
           <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6 shadow-lg flex-1">
-            <h2 className="text-3xl font-semibold mb-4">Why Membership?</h2>
+            <h2 className="text-3xl font-medium mb-4">Why Membership?</h2>
             <ul className="list-disc list-inside space-y-2">
               <li>Support a mission that matters</li>
               <li>Unlock every story</li>
@@ -95,7 +93,7 @@ const MembershipPage: React.FC = () => {
             </ul>
           </div>
           <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6 shadow-lg flex-1">
-            <h2 className="text-3xl font-semibold mb-4">
+            <h2 className="text-3xl font-medium mb-4">
               What Members Are Saying
             </h2>
             <div className="mb-4">

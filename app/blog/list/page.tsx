@@ -1,5 +1,5 @@
 import BlogList from '@/components/BlogList';
 
-export default function BlogsListPage() {
+export default function FeedsPage() {
   return <BlogList />;
 }

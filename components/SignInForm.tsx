@@ -11,15 +11,17 @@ export default function SignInForm() {
   const error = searchParams.get('error');
 
   return (
-    <div className="mx-auto bg-white dark:bg-gray-800 px-8 pb-8 pt-2 rounded-lg w-full md:w-[500px] min-w-sm">
+    <div
+      className="mx-auto text-slate-900 dark:text-white bg-white
+    dark:bg-gray-800 px-8 pb-8 pt-2 rounded-lg w-full md:w-[500px] min-w-sm">
       <div className="w-full">
-        <h1 className="mx-auto text-2xl font-bold text-center p-8">
+        <p className="mx-auto text-2xl font-bold text-center p-8">
           Login to BlogsTree.
         </h1>
       </div>
       {error && (
         <div className="w-full">
-          <h1 className="mx-auto text-lg font-semibold text-center p-8 text-red-400">
+          <p className="mx-auto text-lg font-semibold text-center p-8 text-red-400">
             {getAuthErrorMessage(error)}
           </h1>
         </div>

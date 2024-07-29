@@ -27,23 +27,33 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold mb-4">Profile</h1>
+    <div className="max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-md">
+      <p className="text-3xl font-bold mb-4">Profile</p>
       <div className="flex flex-col space-y-4">
         <div>
-          <label className="block font-medium text-gray-700">Name:</label>
-          <div className="mt-1 text-gray-900">{user.name}</div>
+          <label htmlFor="name" className="block font-medium text-gray-700">
+            Name:
+          </label>
+          <div id="name" className="mt-1 text-gray-900">
+            {user.name}
+          </div>
         </div>
         <div>
-          <label className="block font-medium text-gray-700">Username:</label>
+          <label htmlFor="username" className="block font-medium text-gray-700">
+            Username:
+          </label>
           <div className="mt-1 text-gray-900">{user.username}</div>
         </div>
         <div>
-          <label className="block font-medium text-gray-700">Email:</label>
+          <label htmlFor="email" className="block font-medium text-gray-700">
+            Email:
+          </label>
           <div className="mt-1 text-gray-900">{user.email}</div>
         </div>
         <div>
-          <label className="block font-medium text-gray-700">
+          <label
+            htmlFor="emailVerified"
+            className="block font-medium text-gray-700">
             Email Verified:
           </label>
           <div className="mt-1 text-gray-900">
@@ -51,13 +61,17 @@ export default function ProfilePage() {
           </div>
         </div>
         <div>
-          <label className="block font-medium text-gray-700">
+          <label
+            htmlFor="followersCount"
+            className="block font-medium text-gray-700">
             Followers Count:
           </label>
           <div className="mt-1 text-gray-900">{user.followersCount}</div>
         </div>
         <div>
-          <label className="block font-medium text-gray-700">
+          <label
+            htmlFor="profileImage"
+            className="block font-medium text-gray-700">
             Profile Image:
           </label>
           <div className="mt-1">
