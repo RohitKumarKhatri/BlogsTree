@@ -1,7 +1,7 @@
 'use client';
 
 import { BlogWithTags, saveWithTags } from '@/actions/blogs';
-import { ColourOption } from '@/actions/react-select';
+import { ReactSelectOptions } from '@/types/ReactSelect';
 import { fetchTagIncludesStringAndIgnoreCase } from '@/actions/tags';
 import '@/assets/css/quill.css';
 import { AppSession } from '@/types/Session';
@@ -15,7 +15,7 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 export default function WriteStory() {
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
-  const [selectedTags, setSelectedTags] = useState<ColourOption[]>([]);
+  const [selectedTags, setSelectedTags] = useState<ReactSelectOptions[]>([]);
   const router = useRouter();
 
   const { data: session } = useSession() as AppSession;
@@ -73,7 +73,9 @@ export default function WriteStory() {
     router.push(`/blog/${persistedPost.id}`);
   };
 
-  const filterColors = async (inputValue: string): Promise<ColourOption[]> => {
+  const filterColors = async (
+    inputValue: string
+  ): Promise<ReactSelectOptions[]> => {
     const tags = await fetchTagIncludesStringAndIgnoreCase(inputValue);
     console.log(tags);
 
@@ -85,7 +87,7 @@ export default function WriteStory() {
   };
 
   const promiseOptions = async (inputValue: string) =>
-    new Promise<ColourOption[]>((resolve) => {
+    new Promise<ReactSelectOptions[]>((resolve) => {
       setTimeout(() => {
         resolve(filterColors(inputValue));
       }, 1000);

@@ -1,16 +1,16 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { fetchBlogs } from '@/actions/blogs';
 import { fetchTrendingTags } from '@/actions/tags';
 import { Blog } from '@prisma/client';
-import Link from 'next/link';
-import Spinner from './Spinner';
 import cheerio from 'cheerio';
-import { AiFillLike } from 'react-icons/ai';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { GiHighFive } from 'react-icons/gi';
 import { LiaCommentSolid } from 'react-icons/lia';
 import { titleCase } from 'title-case';
+import Spinner from './Spinner';
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -106,11 +106,11 @@ export default function BlogList() {
                       </div>
                       <div className="ml-auto flex items-center space-x-4">
                         <span className="flex items-center text-gray-500">
-                          <AiFillLike />
+                          <GiHighFive title="Kudos" />
                           {blog.likesCount}
                         </span>
                         <span className="flex items-center text-gray-500">
-                          <LiaCommentSolid />
+                          <LiaCommentSolid title="Comments" />
                           {blog.commentsCount}
                         </span>
                       </div>
@@ -126,10 +126,12 @@ export default function BlogList() {
       </div>
       <div>
         <h2 className="text-2xl font-bold mb-4">Trending Tags</h2>
-        <div className=" flex flex-wrap space-x-4 space-y-4 text-xl font-medium">
+        <div className=" flex flex-wrap space-x-4 text-xl font-medium justify-start">
           {tags.map((tag) => (
-            <div key={tag.id} className="bg-gray-100 p-2 rounded-lg shadow-md">
-              <p className="text-sm font-medium text-gray-700">
+            <div
+              key={tag.id}
+              className="bg-gray-100 mt-4 p-2 rounded-lg shadow-md">
+              <p className="text-base font-medium text-gray-700">
                 {titleCase(tag.name)}
               </p>
             </div>
