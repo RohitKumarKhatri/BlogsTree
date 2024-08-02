@@ -893,7 +893,7 @@
 .ql-toolbar.ql-snow + .ql-container.ql-snow {
   border: 1px solid;
   border-radius: 10px;
-  min-height: 60svh;
+  min-height: 55svh;
 }
 .ql-snow .ql-tooltip {
   background-color: #fff;

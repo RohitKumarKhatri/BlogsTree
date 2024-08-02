@@ -1,5 +1,5 @@
 import { FiSearch } from 'react-icons/fi';
-import Input from '../html/Input';
+import Input from '../Input';
 
 export default function SearchBox() {
   return (

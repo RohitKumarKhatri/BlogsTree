@@ -17,13 +17,13 @@ export default function SignInForm() {
       <div className="w-full">
         <p className="mx-auto text-2xl font-bold text-center p-8">
           Login to BlogsTree.
-        </h1>
+        </p>
       </div>
       {error && (
         <div className="w-full">
           <p className="mx-auto text-lg font-semibold text-center p-8 text-red-400">
             {getAuthErrorMessage(error)}
-          </h1>
+          </p>
         </div>
       )}
 

@@ -12,7 +12,7 @@
 }
 
 .blog-body h1 {
-  @apply font-bold mt-4; /* or any other Tailwind CSS utility */
+  @apply font-bold mt-4 text-xl md:text-2xl lg:text-3xl; /* or any other Tailwind CSS utility */
 }
 
 .blog-body h2 {

@@ -44,19 +44,19 @@ export default function ProfileButton() {
       {isDropdownOpen && (
         <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
           <Link
-            href="/profile"
+            href="/user/profile"
             onClick={toggleDropdown}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             Profile
           </Link>
           <Link
-            href="/blog/my-blogs"
+            href="/user/my-blogs"
             onClick={toggleDropdown}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             My Blogs
           </Link>
           <Link
-            href="/settings"
+            href="/user/settings"
             onClick={toggleDropdown}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             Settings

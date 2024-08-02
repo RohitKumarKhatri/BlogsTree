@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import GetStartedButton from '../html/GetStartedButton';
+import GetStartedButton from './GetStartedButton';
 
 export default function LoginAndSignup() {
   return (

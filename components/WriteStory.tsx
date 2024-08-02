@@ -1,8 +1,8 @@
 'use client';
 
-import { BlogWithTags, saveWithTags } from '@/actions/blogs';
+import { BlogWithTags, saveWithTags } from '@/server-actions/blogs';
 import { ReactSelectOptions } from '@/types/ReactSelect';
-import { fetchTagIncludesStringAndIgnoreCase } from '@/actions/tags';
+import { fetchTagIncludesStringAndIgnoreCase } from '@/server-actions/tags';
 import '@/assets/css/quill.css';
 import { AppSession } from '@/types/Session';
 import { useSession } from 'next-auth/react';

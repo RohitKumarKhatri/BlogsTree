@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// Fetch paginated tags
 export async function fetchTags(page: number, limit: number) {
   const skip = (page - 1) * limit;
   const tags = await prisma.tag.findMany({
@@ -48,23 +47,18 @@ export async function fetchTagIncludesStringAndIgnoreCase(name: string) {
 }
 
 async function linkTagsWithBlog(blogId: string, tagNames: string[]) {
-  // Start a transaction
   await prisma.$transaction(async (prisma) => {
-    // Process each tag
     for (const tagName of tagNames) {
-      // Check if the tag exists
       let tag = await prisma.tag.findUnique({
         where: { name: tagName },
       });
 
-      // If the tag does not exist, create it
       if (!tag) {
         tag = await prisma.tag.create({
           data: { name: tagName },
         });
       }
 
-      // Create the BlogTag association
       await prisma.blogTag.create({
         data: {
           blogId,
@@ -76,7 +70,6 @@ async function linkTagsWithBlog(blogId: string, tagNames: string[]) {
 }
 
 export async function fetchTrendingTags() {
-  // This is a simple example, you might want to use more complex logic to get trending tags
   return await prisma.tag.findMany({
     orderBy: {
       blogs: {

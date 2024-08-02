@@ -1,6 +1,6 @@
 'use client';
 
-import { commentOnBlog, fetchBlogById, likeBlog } from '@/actions/blogs';
+import { commentOnBlog, fetchBlogById, likeBlog } from '@/server-actions/blogs';
 import '@/assets/css/quill.css';
 import Spinner from '@/components/Spinner';
 import { Blog } from '@prisma/client';

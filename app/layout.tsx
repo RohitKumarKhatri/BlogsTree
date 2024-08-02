@@ -2,7 +2,7 @@ import Navbar from '@/components/navbar/Navbar';
 import React from 'react';
 import './globals.css';
 import Footer from '@/components/footer/Footer';
-import { NextAuthProvider } from '@/components/NextAuthProvider';
+import { NextAuthProvider } from '@/components/auth/NextAuthProvider';
 
 export default function AuthLayout({
   modal,

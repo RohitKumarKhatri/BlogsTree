@@ -20,9 +20,7 @@ export async function save(blog: BlogData) {
 }
 
 export async function saveWithTags(blogWithTags: BlogWithTags) {
-  // Start a transaction
   const result = await prisma.$transaction(async (prisma) => {
-    // Create the blog
     const blog = await prisma.blog.create({
       data: {
         title: blogWithTags.title,
@@ -31,21 +29,17 @@ export async function saveWithTags(blogWithTags: BlogWithTags) {
       },
     });
 
-    // Process each tag
     for (const tagName of blogWithTags.tags ?? []) {
-      // Check if the tag exists
       let tag = await prisma.tag.findUnique({
         where: { name: tagName.name },
       });
 
-      // If the tag does not exist, create it
       if (!tag) {
         tag = await prisma.tag.create({
           data: { name: tagName.name.toLowerCase() },
         });
       }
 
-      // Create the BlogTag association
       await prisma.blogTag.create({
         data: {
           blogId: blog.id,

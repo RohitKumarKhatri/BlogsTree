@@ -1,5 +1,5 @@
 'use client';
-import { getUser } from '@/actions/users';
+import { getUser } from '@/server-actions/users';
 import { AppSession } from '@/types/Session';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';

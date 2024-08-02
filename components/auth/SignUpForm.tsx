@@ -11,7 +11,7 @@ export default function SignUpForm() {
       <div className="w-full">
         <p className="mx-auto text-2xl font-bold text-center p-8">
           Join BlogsTree.
-        </h1>
+        </p>
       </div>
 
       <div className="mt-6 ">

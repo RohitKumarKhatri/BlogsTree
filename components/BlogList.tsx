@@ -1,13 +1,13 @@
 'use client';
 
-import { fetchBlogs } from '@/actions/blogs';
-import { fetchTrendingTags } from '@/actions/tags';
+import { fetchBlogs } from '@/server-actions/blogs';
+import { fetchTrendingTags } from '@/server-actions/tags';
 import { Blog } from '@prisma/client';
 import cheerio from 'cheerio';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { GiHighFive } from 'react-icons/gi';
+import { FaHandsClapping } from 'react-icons/fa6';
 import { LiaCommentSolid } from 'react-icons/lia';
 import { titleCase } from 'title-case';
 import Spinner from './Spinner';
@@ -61,11 +61,13 @@ export default function BlogList() {
   return (
     <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
       <div className="md:col-span-2">
-        <h2 className="text-2xl font-bold mb-4">Trending Blogs</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Trending</h2>
         <div className="space-y-8 ">
           {blogs.length === 0 && <p> Start Creating blogs...</p>}
           {blogs.map((blog) => (
-            <div className="m-4 bg-white rounded-lg shadow-md" key={blog.id}>
+            <div
+              className="m-4 bg-white dark:bg-slate-800 rounded-lg shadow-md"
+              key={blog.id}>
               <Link key={blog.id} href={`/blog/${blog.id}`} className="my-4">
                 <div className="p-6 flex flex-col md:flex-row">
                   <div className="md:w-1/3 mb-4 md:mb-0">
@@ -83,7 +85,7 @@ export default function BlogList() {
                   <div className="md:w-2/3 md:pl-6 flex flex-col justify-between">
                     <div>
                       <h3 className="text-xl font-bold">{blog.title}</h3>
-                      <p className="mt-2 text-gray-600">
+                      <p className="mt-2 text-gray-600 dark:text-gray-300">
                         {getFirstLongParagraph(blog.body).slice(0, 200)}...
                       </p>
                     </div>
@@ -106,7 +108,10 @@ export default function BlogList() {
                       </div>
                       <div className="ml-auto flex items-center space-x-4">
                         <span className="flex items-center text-gray-500">
-                          <GiHighFive title="Kudos" />
+                          <FaHandsClapping
+                            title="Kudos"
+                            className="text-blue-300"
+                          />
                           {blog.likesCount}
                         </span>
                         <span className="flex items-center text-gray-500">
@@ -125,7 +130,9 @@ export default function BlogList() {
         {loading && <Spinner />}
       </div>
       <div>
-        <h2 className="text-2xl font-bold mb-4">Trending Tags</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          Recommended Topics
+        </h2>
         <div className=" flex flex-wrap space-x-4 text-xl font-medium justify-start">
           {tags.map((tag) => (
             <div

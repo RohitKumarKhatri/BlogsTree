@@ -1,6 +1,6 @@
 import ImageSlider from '@/components/Image';
 import ImageCarousel from '@/components/ImageCarousel';
-import Button from '@/components/html/Button';
+import Button from '@/components/navbar/Button';
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 

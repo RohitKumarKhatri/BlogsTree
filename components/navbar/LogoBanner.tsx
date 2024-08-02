@@ -1,5 +1,5 @@
-import BlogsTreeBanner from '../html/BlogsTreeBanner';
-import Logo from '../html/Logo';
+import BlogsTreeBanner from './BlogsTreeBanner';
+import Logo from '../Logo';
 
 export default function LogoBanner() {
   return (

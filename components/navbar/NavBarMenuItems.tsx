@@ -17,7 +17,7 @@ export default function NavBarMenuItems() {
       <div className="hidden sm:block flex-grow mx-4 items-center">
         <SearchBox />
       </div>
-      <Link href="/blog/list" className="hidden md:block">
+      <Link href="/blog/list" className="hidden lg:block">
         Stories
       </Link>
       <Link href="/membership" className="hidden md:block">

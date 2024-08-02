@@ -1,5 +1,5 @@
 import { Modal } from '@/components/Modal';
-import SignInForm from '@/components/SignInForm';
+import SignInForm from '@/components/auth/SignInForm';
 
 export default function SignInModal() {
   return (
