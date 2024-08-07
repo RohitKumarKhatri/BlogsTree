@@ -1,5 +1,6 @@
 # BlogsTree
 
+![Home](/assets/images/mainpage.png)
 BlogsTree is a feature-rich blogging application built with Next.js, Tailwind CSS, and Prisma ORM. The application allows users to create, read, like, and comment on blogs, manage tags, and interact with a dynamic blogging community.
 
 ## Features

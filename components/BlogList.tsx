@@ -50,7 +50,7 @@ export default function BlogList() {
     const paragraphs = $('p');
     for (let i = 0; i < paragraphs.length; i++) {
       const paragraphText = $(paragraphs[i]).text();
-      if (paragraphText.length >= 200) {
+      if (paragraphText.length >= 130) {
         return paragraphText;
       }
     }
@@ -85,7 +85,7 @@ export default function BlogList() {
                     <div>
                       <h3 className="text-xl font-bold">{blog.title}</h3>
                       <p className="mt-2 text-gray-600 dark:text-gray-300">
-                        {getFirstLongParagraph(blog.body).slice(0, 200)}...
+                        {getFirstLongParagraph(blog.body).slice(0, 130)}...
                       </p>
                     </div>
                     <div className="flex items-center mt-10 justify-end">

@@ -4,12 +4,12 @@ import NavBarSessionButtons from './NavbarSessionButtons';
 
 export default function Navbar() {
   return (
-    <nav className="p-4">
+    <nav className="p-4 mt-10">
       <div className="container mx-auto flex justify-between items-center">
         <LogoBanner />
         <NavBarMenuItems />
         <NavBarSessionButtons />
-      </div>
+      </div>{' '}
     </nav>
   );
 }

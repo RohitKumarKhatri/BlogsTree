@@ -76,6 +76,6 @@ export async function fetchTrendingTags() {
         _count: 'desc',
       },
     },
-    take: 10,
+    take: 12,
   });
 }
