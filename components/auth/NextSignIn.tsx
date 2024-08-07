@@ -17,7 +17,7 @@ const NextSignIn = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
-        <p className="text-2xl font-semibold mb-4 text-center">Sign In</h1>
+        <p className="text-2xl font-semibold mb-4 text-center">Sign In</p>
         <div className="space-y-4">
           {providers &&
             Object.values(providers).map((provider: any) => (

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { User } from '@prisma/client';
 import Spinner from '@/components/Spinner';
+import { FaUser } from 'react-icons/fa';
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
@@ -84,7 +85,7 @@ export default function ProfilePage() {
                 className="w-32 h-32 rounded-full"
               />
             ) : (
-              <span className="text-gray-500">No image available</span>
+              <FaUser />
             )}
           </div>
         </div>

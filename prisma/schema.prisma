@@ -15,6 +15,7 @@ model User {
   emailVerified  Boolean?         @default(false)
   image          String?
   followersCount Int?             @default(0)
+  password       String?        @default("")
   blogs          Blog[]
   comments       Comment[]
   likes          Like[]

@@ -24,6 +24,7 @@ type AuthErrorMessages = {
   MISSING_NEXTAUTH_API_ROUTE_ERROR: string;
   NO_SECRET: string;
   AUTH_ON_ERROR_PAGE_ERROR: string;
+  'Incorrect password': string;
 };
 
 const authErrorMessages: AuthErrorMessages = {
@@ -70,6 +71,7 @@ const authErrorMessages: AuthErrorMessages = {
     'In production, a secret property must be defined in your configuration. Please set NEXTAUTH_SECRET in your environment variables.',
   AUTH_ON_ERROR_PAGE_ERROR:
     'There was an error with your custom error page requiring authentication. Please check your middleware and page configuration.',
+  'Incorrect password': 'Username or password is not valid, Please try again.',
 };
 
 export function getAuthErrorMessage(errorCode: string): string {

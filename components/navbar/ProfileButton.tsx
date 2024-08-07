@@ -3,6 +3,7 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { FaUser } from 'react-icons/fa';
 
 export default function ProfileButton() {
   const { data: session, status } = useSession() as AppSession;
@@ -33,13 +34,17 @@ export default function ProfileButton() {
   return (
     <div className="relative" ref={dropdownRef}>
       <div className="w-8 h-8 cursor-pointer" onClick={toggleDropdown}>
-        <Image
-          src={session.user.image}
-          alt="Profile"
-          layout="fill"
-          className="rounded-full"
-          priority={false}
-        />
+        {session!.user.image ? (
+          <Image
+            src={session!.user.image}
+            alt="Profile"
+            layout="fill"
+            className="rounded-full"
+            priority={false}
+          />
+        ) : (
+          <FaUser className="text-purple-500 text-3xl" />
+        )}
       </div>
       {isDropdownOpen && (
         <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">

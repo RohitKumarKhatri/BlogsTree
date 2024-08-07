@@ -2,13 +2,38 @@
 import { getAuthErrorMessage } from '@/lib/errorHandler';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
-export default function SignInForm() {
+export default function SignInForm({ isModalOpen }: { isModalOpen: boolean }) {
   const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+  const router = useRouter();
+  const [error, setError] = useState('');
+  const searchParamsError = searchParams.get('error');
+  if (searchParamsError) {
+    setError(searchParamsError);
+  }
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    const result = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
+
+    if (result?.error) {
+      setError(result.error);
+    } else {
+      isModalOpen ? router.back() : router.push('/');
+    }
+  };
 
   return (
     <div
@@ -27,7 +52,7 @@ export default function SignInForm() {
         </div>
       )}
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             className="block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -37,6 +62,7 @@ export default function SignInForm() {
           <input
             type="email"
             id="email"
+            onChange={(e) => setEmail(e.target.value)}
             className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
@@ -50,24 +76,12 @@ export default function SignInForm() {
           <input
             type="password"
             id="password"
+            onChange={(e) => setPassword(e.target.value)}
             className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
         </div>
         <div className="flex flex-col space-y-4 items-center justify-between mb-6">
-          <div className="flex items-center">
-            <input
-              id="remember_me"
-              name="remember_me"
-              type="checkbox"
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-            />
-            <label
-              htmlFor="remember_me"
-              className="ml-2 block text-sm text-gray-900 dark:text-gray-300">
-              Remember me
-            </label>
-          </div>
           <div className="text-sm">
             <Link
               href="#"

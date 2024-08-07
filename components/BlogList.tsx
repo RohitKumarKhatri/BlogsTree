@@ -42,7 +42,6 @@ export default function BlogList() {
   function getFirstImageLink(html: string) {
     const $ = cheerio.load(html);
     const firstImage = $('img').first();
-    console.log(firstImage);
     return firstImage.attr('src');
   }
 

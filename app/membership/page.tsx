@@ -1,10 +1,9 @@
-import ImageSlider from '@/components/Image';
 import ImageCarousel from '@/components/ImageCarousel';
 import Button from '@/components/navbar/Button';
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 
-const MembershipPage: React.FC = () => {
+const MembershipPage: React.FC = async () => {
   return (
     <div className="min-h-screen p-6 ">
       <p className="text-5xl mb-12 text-center">Join BlogsTree Membership</p>
@@ -99,7 +98,7 @@ const MembershipPage: React.FC = () => {
             <div className="mb-4">
               <p className="font-semibold">Cassie Kozyrkov</p>
               <p>
-                Social media often promotes low-quality content. That's not the
+                Social media often promotes low-quality content. That`s not the
                 case with BlogsTree. As a reader and writer, I value the quality
                 here.
               </p>
@@ -122,7 +121,7 @@ const MembershipPage: React.FC = () => {
               <p className="font-semibold">Wenqi Glantz</p>
               <p>
                 BlogsTree membership offers a wealth of high-quality tech
-                articles. It's one of the best investments I've made for my
+                articles. It`s one of the best investments I`ve made for my
                 career.
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">

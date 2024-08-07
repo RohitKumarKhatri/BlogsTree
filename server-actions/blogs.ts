@@ -7,8 +7,6 @@ export type BlogData = Omit<Blog, 'id'>;
 
 export type BlogWithTags = BlogData & { tags?: { name: string }[] };
 export async function save(blog: BlogData) {
-  console.log(blog);
-
   try {
     const result = await prisma.blog.create({
       data: blog,

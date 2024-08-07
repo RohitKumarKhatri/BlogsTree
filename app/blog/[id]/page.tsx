@@ -1,13 +1,14 @@
 'use client';
 
-import { commentOnBlog, fetchBlogById, likeBlog } from '@/server-actions/blogs';
 import '@/assets/css/quill.css';
 import Spinner from '@/components/Spinner';
+import { commentOnBlog, fetchBlogById, likeBlog } from '@/server-actions/blogs';
 import { Blog } from '@prisma/client';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { AiFillEdit, AiFillLike } from 'react-icons/ai';
+import { AiFillEdit } from 'react-icons/ai';
+import { FaHandsClapping } from 'react-icons/fa6';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function BlogPage({
@@ -78,7 +79,7 @@ export default function BlogPage({
           <button
             className="bg-blue-500 rounded-full px-5 py-2 text-white"
             onClick={handleLike}>
-            <AiFillLike />
+            <FaHandsClapping />
           </button>
           <button
             className="bg-gray-500 rounded-full px-5 py-2 text-white"

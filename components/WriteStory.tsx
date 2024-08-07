@@ -69,7 +69,6 @@ export default function WriteStory() {
       }),
     };
     const persistedPost = await saveWithTags(blog);
-    console.log(persistedPost);
     router.push(`/blog/${persistedPost.id}`);
   };
 
@@ -77,7 +76,6 @@ export default function WriteStory() {
     inputValue: string
   ): Promise<ReactSelectOptions[]> => {
     const tags = await fetchTagIncludesStringAndIgnoreCase(inputValue);
-    console.log(tags);
 
     return tags.map((tag) => ({
       value: tag.name,
