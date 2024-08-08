@@ -117,7 +117,7 @@ export default function WriteStory() {
           className="write-blogs-react-select-container"
           classNamePrefix="write-blogs-react-select"
           onChange={(selectedOptions) => {
-            setSelectedTags(selectedOptions);
+            setSelectedTags([...selectedOptions]);
           }}
         />
         <div className="flex items-center justify-center sm:justify-end m-4 dark:text-black flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 font-medium ">

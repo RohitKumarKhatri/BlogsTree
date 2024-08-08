@@ -3,10 +3,10 @@ import { getAuthErrorMessage } from '@/lib/errorHandler';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
-export default function SignInForm({ isModalOpen }: { isModalOpen: boolean }) {
+function SignIn({ isModalOpen }: { isModalOpen: boolean }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [error, setError] = useState('');
@@ -119,5 +119,17 @@ export default function SignInForm({ isModalOpen }: { isModalOpen: boolean }) {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function SignInFormWrapper({
+  isModalOpen,
+}: {
+  isModalOpen: boolean;
+}) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignIn isModalOpen={isModalOpen} />
+    </Suspense>
   );
 }

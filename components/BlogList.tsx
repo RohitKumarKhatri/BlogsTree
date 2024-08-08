@@ -2,7 +2,6 @@
 
 import { fetchBlogs } from '@/server-actions/blogs';
 import { fetchTrendingTags } from '@/server-actions/tags';
-import { Blog } from '@prisma/client';
 import cheerio from 'cheerio';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,6 +10,11 @@ import { FaHandsClapping } from 'react-icons/fa6';
 import { LiaCommentSolid } from 'react-icons/lia';
 import { titleCase } from 'title-case';
 import Spinner from './Spinner';
+import { Blog as PrismaBlog, User } from '@prisma/client';
+
+interface Blog extends PrismaBlog {
+  author: User;
+}
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -54,7 +58,7 @@ export default function BlogList() {
         return paragraphText;
       }
     }
-    return ''; // Return an empty string if no paragraph meets the condition
+    return '';
   }
 
   return (
@@ -102,7 +106,7 @@ export default function BlogList() {
                           {blog.author.name}
                         </p>
                         <p className="text-sm text-gray-500">
-                          {new Date(blog.createdAt).toLocaleDateString()}
+                          {new Date(blog.createdAt!).toLocaleDateString()}
                         </p>
                       </div>
                       <div className="ml-auto flex items-center space-x-4">
